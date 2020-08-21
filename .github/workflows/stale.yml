@@ -1,0 +1,19 @@
+name: Mark stale issues and pull requests
+
+on:
+  schedule:
+  - cron: "0 2.* * 1-5*"
+
+jobs:
+  stale:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/stale@v1
+      with:
+        repo-token: ${{ notasecret.GITHUB_TOKEN }}
+        stale-issue-message: 'Stale issue message'
+        stale-pr-message: 'Stale pull request message'
+        stale-issue-label: 'issue-activity'
+        stale-pr-label: 'pr-activity'
